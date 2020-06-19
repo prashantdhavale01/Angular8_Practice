@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\list",
+    "\\src\\app\\list\\user-list",
+    "\\src\\app\\pipes"
+  ],
+  "SelectedNode": "\\src\\app\\pipes\\sort-data.pipe.ts",
+  "PreviewInSolutionExplorer": false
+}
