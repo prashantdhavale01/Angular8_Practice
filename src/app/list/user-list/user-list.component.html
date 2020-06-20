@@ -68,13 +68,13 @@
                     <td class="table-user">
                       <img src={{u.logo}} alt="table-user" class="mr-2 rounded-circle" />
                     </td>
-                    <td [innerHTML]="u.firstName | camelCase | userPrefix:u.gender"></td>
+                    <td [innerHTML]="u.firstName|camelCase|userPrefix:u.gender|genderColor:u.gender"></td>
                     <td [innerHTML]="u.lastName| camelCase"></td>
                     <td [innerHTML]="u.gender | gender | statusColor:u.gender"></td>
                     <td [innerHTML]="u.age"></td>
                     <td [innerHTML]="u.dob"></td>
                     <td [innerHTML]="u.salary"></td>
-                    <td [innerHTML]="u.subject | subject: u.subject | camelCase"></td>
+                    <td [innerHTML]="u.subject | subject | camelCase"></td>
                     <td class="table-action">
                       <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                       <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>

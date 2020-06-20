@@ -5,8 +5,9 @@
     "\\src\\app",
     "\\src\\app\\list",
     "\\src\\app\\list\\user-list",
-    "\\src\\app\\pipes"
+    "\\src\\app\\pipes",
+    "\\src\\app\\shared-util"
   ],
-  "SelectedNode": "\\src\\app\\pipes\\sort-data.pipe.ts",
+  "SelectedNode": "\\src\\app\\shared-util\\shared-util.ts",
   "PreviewInSolutionExplorer": false
 }

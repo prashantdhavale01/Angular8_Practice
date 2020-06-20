@@ -10,7 +10,13 @@ export class SortDataPipe implements PipeTransform {
     let columName = sortConfig.columName;
     let columType = sortConfig.columType;
     let orderBy = sortConfig.orderBy;
+    let customLogic = sortConfig.customLogic;
     return value.sort((e1, e2) => {
+
+      if (customLogic) {
+        return customLogic(e1, e2, sortConfig);
+      }
+
       if (columType === 'num' || columType === 'caseSensitive') {
         return e1[columName] > e2[columName] ? -1 * orderBy : 1 * orderBy;
       }

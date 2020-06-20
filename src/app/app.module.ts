@@ -16,6 +16,7 @@ import { CamelCasePipe } from './pipes/camel-case.pipe';
 import { StatusColorPipe } from './pipes/status-color.pipe';
 import { SubjectPipe } from './pipes/subject.pipe';
 import { SortDataPipe } from './pipes/sort-data.pipe';
+import { GenderColorPipe } from './pipes/gender-color.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SortDataPipe } from './pipes/sort-data.pipe';
     CamelCasePipe,
     StatusColorPipe,
     SubjectPipe,
-    SortDataPipe
+    SortDataPipe,
+    GenderColorPipe
   ],
   imports: [
     BrowserModule,

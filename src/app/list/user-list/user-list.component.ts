@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CamelCasePipe } from '../../pipes/camel-case.pipe';
+import { UserPrefixPipe } from '../../pipes/user-prefix.pipe';
+import { Subject } from 'rxjs';
+import { SubjectPipe } from '../../pipes/subject.pipe';
+import { SharedUtil } from '../../shared-util/shared-util';
 
 @Component({
   selector: 'app-user-list',
@@ -92,7 +97,8 @@ export class UserListComponent implements OnInit {
   sortConfig = {
     orderBy : -1,
     columName : 'id',
-    columType : 'num'
+    columType: 'num',
+    customLogic: undefined
   }
 
   sortFunc(columName, columType) {
@@ -100,7 +106,23 @@ export class UserListComponent implements OnInit {
     /*let orderBy = this.orderBy;*/
     this.sortConfig.columName = columName;
     this.sortConfig.columType = columType;
+    
+    if (columName == "firstName") {
+      //u.firstName | camelCase | userPrefix:u.gender | genderColor:u.gender
+      /*let utlity = new SharedUtil();
+      this.sortConfig.customLogic = utlity.firstNameSort;*/
+      this.sortConfig.customLogic = SharedUtil.firstNameSort;
 
+    }
+    else if(columName == "subject") {
+      //u.firstName | camelCase | userPrefix:u.gender | genderColor:u.gender
+      /*let utlity = new SharedUtil();
+      this.sortConfig.customLogic = utlity.subjectSort;*/
+      this.sortConfig.customLogic = SharedUtil.firstNameSort;
+    }
+    else {
+      this.sortConfig.customLogic = undefined;
+    }
 
       /*this.userList.sort((e1, e2) => {
         if (columType === 'num' || columType === 'caseSensitive') {
