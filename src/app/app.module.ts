@@ -17,6 +17,7 @@ import { StatusColorPipe } from './pipes/status-color.pipe';
 import { SubjectPipe } from './pipes/subject.pipe';
 import { SortDataPipe } from './pipes/sort-data.pipe';
 import { GenderColorPipe } from './pipes/gender-color.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GenderColorPipe } from './pipes/gender-color.pipe';
     StatusColorPipe,
     SubjectPipe,
     SortDataPipe,
-    GenderColorPipe
+    GenderColorPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

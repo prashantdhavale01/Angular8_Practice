@@ -63,7 +63,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let u of userList | sortData: sortConfig">
+                  <tr>
+                    <th><input class="w-20p" type="text" #txtID (input)="search($event.target.value, 'id')" value=""></th>
+                    <th></th>
+                    <th><input class="w-80p" type="text" (input)="search($event.target.value, 'firstName')" value=""></th>
+                    <th><input class="w-80p" type="text" (input)="search($event.target.value, 'lastName')" value=""></th>
+                    <th><input class="w-80p" type="text" (input)="search($event.target.value, 'gender')" value=""></th>
+                    <th>
+                      <input class="w-20p" type="text" (input)="search($event.target.value, 'ageGT')" value=""> to <input class="w-20p" type="text" (input)="search($event.target.value, 'ageLT')" value="">
+                    </th>
+                    <th>
+                      <input class="w-80p" type="text" (input)="search($event.target.value, 'date')" value="">
+                    </th>
+                    <th><input class="w-80p" type="text" (input)="search($event.target.value, 'salary')" value=""></th>
+                    <th><input class="w-80p" type="text" (input)="search($event.target.value, 'subject')" value=""></th>
+                    <th>Action</th>
+                  </tr>
+                  <tr *ngFor="let u of filterConf.rows| filter:filterConf | sortData: sortConfig">
                     <td>{{u.id}}</td>
                     <td class="table-user">
                       <img src={{u.logo}} alt="table-user" class="mr-2 rounded-circle" />

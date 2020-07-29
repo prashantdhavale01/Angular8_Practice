@@ -4,6 +4,7 @@ import { UserPrefixPipe } from '../../pipes/user-prefix.pipe';
 import { Subject } from 'rxjs';
 import { SubjectPipe } from '../../pipes/subject.pipe';
 import { SharedUtil } from '../../shared-util/shared-util';
+import { GenderPipe } from '../../pipes/gender.pipe';
 
 @Component({
   selector: 'app-user-list',
@@ -152,10 +153,91 @@ export class UserListComponent implements OnInit {
             return e1.firstName > e2.firstName ? -1 * orderBy : 1 * orderBy;
           })
         }*/
+  };
+
+  filterConf = {
+    data: this.userList,
+    rows: this.userList,
+    filter: {
+      'id': {
+        columnName: 'id',
+        columnType: 'num',
+        value: '',
+        customLogic: undefined
+      },
+      'firstName': {
+        columnName: 'firstName',
+        columnType: 'cistr',
+        value: '',
+        customLogic: (e1, value) => {
+          let cs = new CamelCasePipe();
+          let ut = new UserPrefixPipe();
+          let val1 = cs.transform(e1.firstName);
+          val1 = ut.transform(val1, e1.gender);
+          return val1.toLowerCase().indexOf(value.toLowerCase()) > -1;
+        }
+      },
+      'lastName': {
+        columnName: 'lastName',
+        columnType: 'cistr',
+        value: '',
+        customLogic: undefined
+      },
+      'gender': {
+        columnName: 'gender',
+        columnType: 'cistr',
+        value: '',
+        customLogic: (e, value) => {
+          let gp = new GenderPipe();
+          let val = gp.transform(e.gender);
+          return val.toLowerCase().indexOf(value.toLowerCase()) > -1;
+        }
+      },
+      'ageGT': {
+        columnName: 'age',
+        columnType: 'numGT',
+        value: '',
+        customLogic: undefined
+      },
+      'ageLT': {
+        columnName: 'age',
+        columnType: 'numLT',
+        value: '',
+        customLogic: undefined
+      },
+      'date': {
+        columnName: 'dob',
+        columnType: 'dob',
+        value: '',
+        customLogic: undefined
+      },
+      'salary': {
+        columnName: 'salary',
+        columnType: 'num',
+        value: '',
+        customLogic: undefined
+      },
+      'subject': {
+        columnName: 'subject',
+        columnType: 'cistr',
+        value: '',
+        customLogic: (e, value) => {
+          let sp = new SubjectPipe();
+          let val = sp.transform(e.subject); 
+          return val.toLowerCase().indexOf(value.toLowerCase()) > -1;
+        }
+      },
+    }
+  }
+
+  search(val, name) {
+    console.log(val);
+    console.log(name);
+    this.filterConf.filter[name].value = val;    
+    //this.filterConf.rows = rows;    
   }
 
   constructor() { }
-
   ngOnInit(): void {
   }
 

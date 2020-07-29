@@ -8,6 +8,6 @@
     "\\src\\app\\pipes",
     "\\src\\app\\shared-util"
   ],
-  "SelectedNode": "\\src\\app\\shared-util\\shared-util.ts",
+  "SelectedNode": "\\src\\app\\list\\user-list\\user-list.component.html",
   "PreviewInSolutionExplorer": false
 }
